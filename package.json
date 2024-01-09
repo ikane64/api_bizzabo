@@ -1,0 +1,20 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.4",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.2",
+    "ejs": "^3.1.9",
+    "expres": "^0.0.5",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2"
+  },
+  "description": ""
+}

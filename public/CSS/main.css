@@ -1,0 +1,70 @@
+/* Buttons */
+.btn-success {
+    border-radius: 60px !important;
+    border-width: 0;
+    padding: 12px 30px;
+    background-color: rgb(52, 192, 80);
+  }
+  
+  /* Form Controls */
+  .form-control {
+    border-radius: 60px !important;
+  }
+  
+  /* Output */
+  .output {
+    height: auto;
+    resize: none;
+    color: rgb(126, 126, 126);
+    border-radius: 0 !important;
+  }
+  
+  .output:disabled {
+    background-color: white;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  
+  /* Submit Button */
+  .submitBtn {
+    margin-bottom: 5% !important;
+    margin-top: 5%;
+  }
+  
+  /* Link Buttons */
+  .linkButtons {
+    display: none;
+  }
+  
+  /* Copy Button */
+  .copyBtn {
+    border-radius: 60px !important;
+    background-color: rgb(197, 197, 197);
+    border: none;
+  }
+
+  input {
+    color: rgb(152, 152, 152) !important;
+  }
+
+/* Container */
+  .container {
+    width: 60%;
+  }
+
+  @media (max-width: 800px) {
+    .container {
+        width: 80%;
+      }
+  }
+
+  #magicLink{
+    display: none;
+  }
+  #magicLinkLabel{
+    display: none;
+  }
+  
+  
