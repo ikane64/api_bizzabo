@@ -35,7 +35,7 @@ async function exportMagicLinks() {
 
         if (data.fileLink) {
             // If the file link is available, update the label element with the link
-            fileLinkLabel.innerHTML = `Link export was successful. Download the file <a href="${data.fileLink}">here</a>.`;
+            fileLinkLabel.innerHTML = `Link export successful. Download the file <a href="${data.fileLink}">here</a>.`;
         } else {
             // If there is no file link, display a message indicating no registrations were processed
             fileLinkLabel.textContent = data.message;
