@@ -67,7 +67,7 @@ const getRegistrations = async (req, res) => {
 
     if (totalPages > 0) {
         fileName = await createExcelFile("magicLinks_" + eventId);
-        const filePath = `./public/xls/${fileName}.xlsx`;
+        const filePath = `../public/xls/${fileName}.xlsx`;
         const promises = [];
 
         for (let page = 0; page < totalPages; page++) {
@@ -102,9 +102,9 @@ const getRegistrations = async (req, res) => {
 const createExcelFile = async (filename) => {
     let newFilename = filename;
     let counter = 1;
-
+    
     // Check if the file exists
-    while (fs.existsSync(`./public/xls/${newFilename}.xlsx`)) {
+    while (fs.existsSync(`../public/xls/${newFilename}.xlsx`)) {
         // If the file exists, add a counter to the filename
         newFilename = `${filename}(${counter})`;
         counter++;
