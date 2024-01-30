@@ -1,3 +1,17 @@
+.nav-link {
+  color: rgb(162, 162, 162) !important;
+  background-color: rgb(232, 232, 232) !important;
+}
+
+.active {
+  color: rgb(105, 105, 105) !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.nav-item {
+  margin-right: 2px !important;
+}
+
 /* Buttons */
 .btn-success {
     border-radius: 60px !important;
