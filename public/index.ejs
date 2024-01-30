@@ -1,54 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></link>
-  <link rel="stylesheet" href="/CSS/main.css">
-  <title>Bizzabo API Interface</title>
-</head>
-
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </link>
+    <link rel="stylesheet" href="/CSS/main.css">
+    <title>Bizzabo API Interface</title>
+  </head>
+  <body>
     <div class="container">
-        
-        <form class="row g-3 mainForm" id="magicLinkForm">
-
-            <div class="col-12 mt-5">
-                <label for="apiKey" class="form-label">API Key:</label>
-                <input type="text" class="form-control" id="apiKey" name="apiKey">
-            </div>
-
-            <div class="col-12">
-                <label for="registrationId" class="form-label">Ticket ID:</label>
-                <input type="text" class="form-control" id="registrationId" name="registrationId">
-            </div>
-
-            <div class="col-12 submitBtn">
-                <button type="submit" class="btn btn-success">Get Link</button>
-            </div>
-
-            <div class="col-12 mt-5">
-                <label for="magicLink" class="form-label" id="magicLinkLabel">Magic Link:</label>
-                <textarea disabled class="form-control output" id="magicLink" name="magicLink"></textarea>
-            </div>
-
-        </form>
-
-        <form class="row g-3 mt-1 linkButtons" id="linkButtons">
-            <div class="col-md-12 mt-3 d-flex justify-content-start">
-                <button class="btn btn-secondary copyBtn me-1" onclick="copyToClipboard(event)">Copy</button>
-                <button class="btn btn-secondary copyBtn" onclick="copyLinkAndOpen(event)">Follow Link</button>
-            </div>
-        </form>
-        
-
+      <ul class="nav nav-tabs mt-5 mb-3">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Get Magic Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/linkExport">Export Magic Links</a>
+        </li>
+      </ul>
+      <form class="row g-3 mainForm" id="magicLinkForm">
+        <div class="col-12 mt-5">
+          <label for="apiKey" class="form-label">API Key:</label>
+          <input type="text" class="form-control" id="apiKey" name="apiKey">
+        </div>
+        <div class="col-12">
+          <label for="registrationId" class="form-label">Ticket ID:</label>
+          <input type="text" class="form-control" id="registrationId" name="registrationId">
+        </div>
+        <div class="col-12 submitBtn">
+          <button type="submit" class="btn btn-success">Get Link</button>
+        </div>
+        <div class="col-12 mt-5">
+          <label for="magicLink" class="form-label" id="magicLinkLabel">Magic Link:</label>
+          <textarea disabled class="form-control output" id="magicLink" name="magicLink"></textarea>
+        </div>
+      </form>
+      <form class="row g-3 mt-1 linkButtons" id="linkButtons">
+        <div class="col-md-12 mt-3 d-flex justify-content-start">
+          <button class="btn btn-secondary copyBtn me-1" onclick="copyToClipboard(event)">Copy</button>
+          <button class="btn btn-secondary copyBtn" onclick="copyLinkAndOpen(event)">Follow Link</button>
+        </div>
+      </form>
     </div>
-
-<script src="/JS/getLink.js"></script>
-<script src="/JS/copyToClipboard.js"></script>
-<script src="/JS/copyLinkAndOpen.js"></script>
-
-
-</body>
+    <script src="/JS/getLink.js"></script>
+    <script src="/JS/copyToClipboard.js"></script>
+    <script src="/JS/copyLinkAndOpen.js"></script>
+  </body>
 </html>
