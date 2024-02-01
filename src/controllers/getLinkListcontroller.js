@@ -2,6 +2,7 @@ const axios = require('axios');
 const xlsx = require('xlsx');
 const fs = require('fs');
 
+
 const processPage = async (apiKey, eventId, page, filePath) => {
     const config = {
         headers: {
@@ -102,9 +103,15 @@ const getRegistrations = async (req, res) => {
 const createExcelFile = async (filename) => {
     let newFilename = filename;
     let counter = 1;
-    
+    const xlsFolderPath = '../public/xls';
+
+    // Check if the xls folder exists, create it if it doesn't
+    if (!fs.existsSync(xlsFolderPath)) {
+        fs.mkdirSync(xlsFolderPath);
+    }
+
     // Check if the file exists
-    while (fs.existsSync(`../public/xls/${newFilename}.xlsx`)) {
+    while (fs.existsSync(path.join(xlsFolderPath, `${newFilename}.xlsx`))) {
         // If the file exists, add a counter to the filename
         newFilename = `${filename}(${counter})`;
         counter++;
