@@ -10,12 +10,15 @@
   </head>
   <body>
     <div class="container">
-      <ul class="nav nav-tabs mt-3 mb-3">
+      <ul class="nav nav-tabs mt-5 mb-3">
         <li class="nav-item">
           <a class="nav-link" href="/">Get Magic Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Export Links</a>
+          <a class="nav-link" aria-current="page" href="/linkExport">Export Magic Links</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Ticket Field Update</a>
         </li>
       </ul>
       <form class="row g-3 mainForm" id="magicLinkForm" action="/linkExport" method="post">
@@ -24,8 +27,18 @@
           <input type="text" class="form-control" id="apiKey" name="apiKey">
         </div>
         <div class="col-12">
-          <label for="eventId" class="form-label">Event ID:</label>
-          <input type="text" class="form-control" id="eventId" name="eventId">
+          <label for="selectField" class="form-label">Select Field:</label>
+          <select class="form-select" id="selectField" name="selectField">
+              <option value="none">Select the field...</option>
+              <option value="firstName">First Name</option>
+              <option value="lastName">Last Name</option>
+              <option value="jobTitle">Job Title</option>
+              <option value="checkedIn">Checked-In</option>
+          </select>
+      </div>
+        <div class="col-12">
+          <label for="registrationIds" class="form-label">Ticket IDs:</label>
+          <textarea type="text" class="form-control" id="eventId" name="eventId" style="min-height: 200px; border-radius: 8px !important;"></textarea>
         </div>
         <div class="col-12 submitBtn">
           <button type="submit" class="btn btn-success">Get Link</button>

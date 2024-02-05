@@ -22,6 +22,9 @@ app.get('/', (req, res) => {
 app.get('/linkExport', (req, res) => {
     res.render('linkExport.ejs');
 });
+app.get('/fieldUpdate', (req, res) => {
+    res.render('fieldUpdate.ejs');
+});
 
 app.post('/', getLinkController.getMagicLink);
 app.post('/linkExport', getLinkListController.getRegistrations);

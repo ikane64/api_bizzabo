@@ -5,7 +5,7 @@ document.getElementById('magicLinkForm').addEventListener('submit', function(eve
     const apiKey = document.getElementById('apiKey').value;
     const registrationId = document.getElementById('registrationId').value;
 
-    fetch('/magicLink', {
+    fetch('/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
