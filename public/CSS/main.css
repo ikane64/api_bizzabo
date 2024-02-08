@@ -30,6 +30,11 @@ a {
   /* Form Controls */
   .form-control {
     border-radius: 60px !important;
+    margin-bottom: 2%;
+  }
+  select{
+    border-radius: 60px !important;
+    margin-bottom: 2%;
   }
   
   /* Output */

@@ -1,5 +1,7 @@
 const getLinkController = require('./controllers/getLinkController');
-const getLinkListController = require('./controllers/getLinkListcontroller');
+const getLinkListController = require('./controllers/getLinkListController');
+const updateFieldController = require('./controllers/updateFieldController');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -44,6 +46,7 @@ app.get('/fieldUpdate', (req, res) => {
 
 app.post('/', getLinkController.getMagicLink);
 app.post('/linkExport', getLinkListController.getRegistrations);
+app.post('/fieldUpdate', updateFieldController.updateField);
 
 
 const httpsServer = https.createServer(options, app);

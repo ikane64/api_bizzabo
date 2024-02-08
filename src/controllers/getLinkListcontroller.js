@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 
+
 const processPage = async (apiKey, eventId, page, filePath) => {
     const config = {
         headers: {
@@ -69,7 +70,7 @@ const getRegistrations = async (req, res) => {
 
     if (totalPages > 0) {
         fileName = await createExcelFile("magicLinks_" + eventId);
-        const filePath = `../public/xls/${fileName}.xlsx`;
+        const filePath = path.join(__dirname, '..', '..', 'public', 'xls', `${fileName}.xlsx`);
         const promises = [];
 
         for (let page = 0; page < totalPages; page++) {
@@ -104,11 +105,13 @@ const getRegistrations = async (req, res) => {
 const createExcelFile = async (filename) => {
     let newFilename = filename;
     let counter = 1;
-    const xlsFolderPath = '../public/xls';
+    const xlsFolderPath = path.join(__dirname, '..', 'public', 'xls');
 
     // Check if the xls folder exists, create it if it doesn't
     if (!fs.existsSync(xlsFolderPath)) {
-        fs.mkdirSync(xlsFolderPath);
+        fs.mkdirSync(xlsFolderPath, {
+            recursive: true
+        });
     }
 
     // Check if the file exists
@@ -121,7 +124,6 @@ const createExcelFile = async (filename) => {
     return newFilename;
 };
 
-// Function for getting page count
 const getPageCount = async (apiKey, eventId) => {
     const config = {
         headers: {

@@ -1,7 +1,6 @@
 async function exportMagicLinks() {
     try {
 
-        // Disable the submit button to prevent multiple clicks
         const submitButton = document.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Processing...';
@@ -14,7 +13,7 @@ async function exportMagicLinks() {
             body: JSON.stringify({
                 apiKey,
                 eventId
-            }), // Use the extracted values from the form
+            }), 
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -25,7 +24,6 @@ async function exportMagicLinks() {
         let fileLinkLabel = document.getElementById('fileLink');
 
         if (!fileLinkLabel) {
-            // If the fileLink label element doesn't exist, create one
             fileLinkLabel = document.createElement('label');
             fileLinkLabel.setAttribute('class', 'form-control output');
             fileLinkLabel.setAttribute('id', 'fileLink');
