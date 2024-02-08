@@ -1,6 +1,7 @@
 const axios = require('axios');
 const xlsx = require('xlsx');
 const fs = require('fs');
+const path = require('path');
 
 
 const processPage = async (apiKey, eventId, page, filePath) => {
