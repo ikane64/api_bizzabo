@@ -1,8 +1,24 @@
 const getLinkController = require('./controllers/getLinkController');
-const getLinkListController = require('./controllers/getLinkListController');
+const getLinkListController = require('./controllers/getLinkListcontroller');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const https = require('https');
+const fs = require('fs');
+const http = require('http');
+
+const options = {
+  key: null,
+  cert: null
+};
+
+try {
+  options.key = fs.readFileSync('/etc/letsencrypt/live/bizzaboapitest.online/privkey.pem');
+  options.cert = fs.readFileSync('/etc/letsencrypt/live/bizzaboapitest.online/fullchain.pem');
+} catch (err) {
+  console.error('Error reading key/cert files:', err);
+  // Handle the error, such as exiting the application or providing a default key/cert
+}
 
 const app = express();
 
@@ -30,7 +46,8 @@ app.post('/', getLinkController.getMagicLink);
 app.post('/linkExport', getLinkListController.getRegistrations);
 
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+const httpsServer = https.createServer(options, app);
+
+httpsServer.listen(443, () => {
+  console.log('Server is running on port 443');
 });

@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 
 
-
 const processPage = async (apiKey, eventId, page, filePath) => {
     const config = {
         headers: {
