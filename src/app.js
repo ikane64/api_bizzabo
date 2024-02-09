@@ -1,6 +1,7 @@
 const getLinkController = require('./controllers/getLinkController');
 const getLinkListController = require('./controllers/getLinkListController');
 const updateFieldController = require('./controllers/updateFieldController');
+const bulkCancelController = require('./controllers/bulkCancelController');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,6 +15,7 @@ const options = {
   cert: null
 };
 
+/*
 try {
   options.key = fs.readFileSync('/etc/letsencrypt/live/bizzaboapitest.online/privkey.pem');
   options.cert = fs.readFileSync('/etc/letsencrypt/live/bizzaboapitest.online/fullchain.pem');
@@ -21,7 +23,7 @@ try {
   console.error('Error reading key/cert files:', err);
   // Handle the error, such as exiting the application or providing a default key/cert
 }
-
+*/
 const app = express();
 
 app.use(bodyParser.urlencoded({
@@ -43,14 +45,18 @@ app.get('/linkExport', (req, res) => {
 app.get('/fieldUpdate', (req, res) => {
     res.render('fieldUpdate.ejs');
 });
+app.get('/bulkCancel', (req, res) => {
+  res.render('bulkCancel.ejs');
+});
 
 app.post('/', getLinkController.getMagicLink);
 app.post('/linkExport', getLinkListController.getRegistrations);
 app.post('/fieldUpdate', updateFieldController.updateField);
+app.post('/bulkCancel', bulkCancelController.bulkTicketCancel);
 
 
-const httpsServer = https.createServer(options, app);
+const httpsServer = http.createServer(app);
 
-httpsServer.listen(443, () => {
+httpsServer.listen(3000, () => {
   console.log('Server is running on port 443');
 });
