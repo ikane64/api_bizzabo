@@ -2,6 +2,8 @@ const axios = require('axios');
 const getAuthToken = require('./getAuthToken');
 
 
+let cancelRequest = false; // Flag to track cancellation request
+
 const bulkTicketCancel = async (req, res) => {
     const { clientId, clientSecret, accountId, eventId, refundAmount, sendEmail, ticketListInput } = req.body;
     ticketList = formatTicketList(ticketListInput); 
@@ -10,6 +12,10 @@ const bulkTicketCancel = async (req, res) => {
 
     try {
         const responses = await Promise.all(Object.entries(ticketOrderPairs).map(async ([ticketId, orderId]) => {
+            if (cancelRequest) {
+                throw new Error('Cancellation requested');
+            }
+
             const apiUrl = `https://api.bizzabo.com/v1/events/${eventId}/registrations/${ticketId}/cancel`;
 
             const body = new FormData();
@@ -37,6 +43,13 @@ const bulkTicketCancel = async (req, res) => {
         res.status(500).json({ error: 'Failed to cancel tickets', details: error.message });
     }
 };
+
+// Endpoint to cancel the operation
+const stopBulkCancellation = (req, res) => {
+    cancelRequest = true;
+    res.json({ message: 'Cancellation request received' });
+};
+
 
 async function getTicketOrderPairs(token, eventId, ticketList) {
     const header = {
@@ -67,7 +80,6 @@ async function getTicketOrderPairs(token, eventId, ticketList) {
         return error.message;
     }
 }
-
 const formatTicketList = function(ticketListInput) {
     // Replace periods with commas
     ticketListInput = ticketListInput.replace(/\./g, ',');
@@ -79,4 +91,5 @@ const formatTicketList = function(ticketListInput) {
 
 module.exports = {
     bulkTicketCancel: bulkTicketCancel,
+    stopBulkCancellation: stopBulkCancellation,
 }

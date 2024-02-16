@@ -1,8 +1,8 @@
+// Modify the bulkCancelTickets function to include cancellation logic
 async function bulkCancelTickets(event) {
     event.preventDefault();
 
     try {
-
         const submitButton = document.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Processing...';
@@ -15,6 +15,30 @@ async function bulkCancelTickets(event) {
         const sendEmail = document.getElementById('sendEmail').value;
         const ticketListInput = document.getElementById('ticketListInput').value;
 
+        // Flag to track cancellation request
+        let cancelRequest = false;
+
+        // Function to handle cancellation request
+        const cancelOperation = async () => {
+            try {
+                const response = await fetch('/cancel-bulk-cancelation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                console.log(data.message);
+            } catch (error) {
+                console.error('Failed to cancel operation:', error);
+            }
+        };
+
+        // Event listener for cancel button
+        document.getElementById('cancelButton').addEventListener('click', async () => {
+            cancelRequest = true;
+            await cancelOperation();
+        });
 
         const response = await fetch('/bulkCancel', {
             method: 'POST',
@@ -64,7 +88,6 @@ async function bulkCancelTickets(event) {
         }
 
         resultDiv.appendChild(statusDiv);
-
 
         submitButton.disabled = false;
         submitButton.textContent = 'Cancel Tickets';

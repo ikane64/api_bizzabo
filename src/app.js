@@ -52,7 +52,9 @@ app.get('/bulkCancel', (req, res) => {
 app.post('/', getLinkController.getMagicLink);
 app.post('/linkExport', getLinkListController.getRegistrations);
 app.post('/fieldUpdate', updateFieldController.updateField);
+
 app.post('/bulkCancel', bulkCancelController.bulkTicketCancel);
+app.post('/cancel-bulk-cancelation', bulkCancelController.stopBulkCancellation);
 
 
 const httpsServer = http.createServer(app);
