@@ -93,4 +93,12 @@ a {
     display: none;
   }
   
+  #cancelButton {
+    display:none;
+    border-radius: 60px !important;
+    border-width: 0;
+    padding: 12px 30px;
+    color: white;
+    background-color: rgb(210, 86, 64);
+  }
   

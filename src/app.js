@@ -43,11 +43,16 @@ app.get('/linkExport', (req, res) => {
 app.get('/fieldUpdate', (req, res) => {
     res.render('fieldUpdate.ejs');
 });
+app.get('/bulkCancel', (req, res) => { 
+  res.render('bulkCancel.ejs'); 
+});
 
 app.post('/', getLinkController.getMagicLink);
 app.post('/linkExport', getLinkListController.getRegistrations);
 app.post('/fieldUpdate', updateFieldController.updateField);
 
+app.post('/bulkCancel', bulkCancelController.checkCancellation, bulkCancelController.bulkTicketCancel); 
+app.post('/cancel-bulk-cancelation', bulkCancelController.stopBulkCancellation);
 
 const httpsServer = https.createServer(options, app);
 
