@@ -1,6 +1,8 @@
 const getLinkController = require('./controllers/getLinkController');
 const getLinkListController = require('./controllers/getLinkListController');
 const updateFieldController = require('./controllers/updateFieldController');
+const bulkCancelController = require('./controllers/bulkCancelController');
+
 
 const express = require('express');
 const bodyParser = require('body-parser');
