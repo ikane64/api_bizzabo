@@ -1,6 +1,6 @@
-const getLinkController = require('./controllers/getLinkController');
-const getLinkListController = require('./controllers/getLinkListController');
-const updateFieldController = require('./controllers/updateFieldController');
+const getLinkController = require('./controllers/getMagicLinkController');
+const getLinkListController = require('./controllers/exportMagicLinkListController');
+const updateFieldController = require('./controllers/updateTicketFieldController');
 const bulkCancelController = require('./controllers/bulkCancelController');
 
 
@@ -49,11 +49,11 @@ app.get('/bulkCancel', (req, res) => {
   res.render('bulkCancel.ejs'); 
 });
 
-app.post('/', getLinkController.getMagicLink);
-app.post('/linkExport', getLinkListController.getRegistrations);
-app.post('/fieldUpdate', updateFieldController.updateField);
-
-app.post('/bulkCancel', bulkCancelController.checkCancellation, bulkCancelController.bulkTicketCancel); 
+app.post('/', getLinkController.getMagicLinkHandler); 
+app.post('/linkExport', getLinkListController.exportMagicLinkList); 
+app.post('/fieldUpdate', updateFieldController.updateField); 
+ 
+app.post('/bulkCancel', bulkCancelController.checkCancellation, bulkCancelController.bulkTicketCancel);  
 app.post('/cancel-bulk-cancelation', bulkCancelController.stopBulkCancellation);
 
 const httpsServer = https.createServer(options, app);
